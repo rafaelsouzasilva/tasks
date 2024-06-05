@@ -1,6 +1,6 @@
-package br.com.rssdev.tasks.domain.repositories
+package br.com.rssdev.tasks.ports.repositories
 
-import br.com.rssdev.tasks.domain.model.User
+import br.com.rssdev.tasks.core.models.User
 import java.util.UUID
 
 interface UserRepositoryInterface {

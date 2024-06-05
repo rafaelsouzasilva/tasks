@@ -1,6 +1,6 @@
-package br.com.rssdev.tasks.domain.repositories
+package br.com.rssdev.tasks.ports.repositories
 
-import br.com.rssdev.tasks.domain.model.Category
+import br.com.rssdev.tasks.core.models.Category
 import java.util.UUID
 
 interface CategoryRepositoryInterface {

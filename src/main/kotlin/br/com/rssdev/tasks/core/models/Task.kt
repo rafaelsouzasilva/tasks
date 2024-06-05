@@ -1,4 +1,4 @@
-package br.com.rssdev.tasks.domain.model
+package br.com.rssdev.tasks.core.models
 
 import java.time.LocalDateTime
 import java.util.UUID
