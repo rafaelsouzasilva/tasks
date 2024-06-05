@@ -1,3 +1,3 @@
-package br.com.rssdev.tasks.model
+package br.com.rssdev.tasks.domain.model
 
 enum class TaskStatus { PENDING, COMPLETED }

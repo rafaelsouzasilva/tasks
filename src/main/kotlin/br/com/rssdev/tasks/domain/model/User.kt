@@ -1,4 +1,4 @@
-package br.com.rssdev.tasks.model;
+package br.com.rssdev.tasks.domain.model;
 
 import java.util.UUID
 
