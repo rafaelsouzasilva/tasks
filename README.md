@@ -28,7 +28,7 @@ A ideia principal é isolar o núcleo da aplicação (regras de negócios) das p
 - **Adapters**: Implementações das interfaces definidas nas portas. Eles traduzem chamadas de tecnologias externas para algo que o núcleo da aplicação entende e vice-versa.
 
 ## Base de dados
-![base_dados.png](images/rename.png)
+![database.png](images/rename.png)
 
 ## Tecnologias e frameworks utilizados
 - **Kotlin**: Linguagem utilizada para desenvolvimento da aplicação.
