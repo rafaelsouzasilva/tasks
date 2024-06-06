@@ -12,10 +12,12 @@ class TaskTimerScheduledJob(
 ) {
 
     private companion object {
-        const val FIVE_SECONDS = 5000L
+        const val ONE_SECOND_IN_MILLISECONDS = 1000L
+        const val ONE_MINUTE = 60L * ONE_SECOND_IN_MILLISECONDS
+        const val FIVE_MINUTES = 5L * ONE_MINUTE
     }
 
-    @Scheduled(fixedRate = FIVE_SECONDS)
+    @Scheduled(fixedRate = FIVE_MINUTES)
     fun notifyFixedRateTaskSchedule() {
         println("executing fixed rate task to verify time reached executed-at: ${System.currentTimeMillis() / 1000}")
         findTasks().forEach { task ->
