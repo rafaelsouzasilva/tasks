@@ -10,6 +10,7 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import java.util.UUID
 
@@ -39,5 +40,33 @@ class TaskServiceTest {
         val result = TaskService(repository, publisher).findAll()
 
         assertEquals(result, tasks)
+    }
+
+    @Test
+    fun `returns found task when find by id and it exists`() {
+        val task1 = TaskBuilder().withId(id = UUID.randomUUID()).build()
+        val task2 = TaskBuilder().withId(id = UUID.randomUUID()).build()
+        val tasks = mutableListOf(task1, task2)
+        val repository: TaskRepositoryInterface = StubTaskRepository(tasks)
+        val publisher = mockk<EventPublisherInterface>(relaxed = true)
+        val taskId = task1.id
+
+        val result = TaskService(repository, publisher).find(taskId)
+
+        assertEquals(result, task1)
+    }
+
+    @Test
+    fun `returns null when find by id and it does not exists`() {
+        val task1 = TaskBuilder().withId(id = UUID.randomUUID()).build()
+        val task2 = TaskBuilder().withId(id = UUID.randomUUID()).build()
+        val tasks = mutableListOf(task1, task2)
+        val repository: TaskRepositoryInterface = StubTaskRepository(tasks)
+        val publisher = mockk<EventPublisherInterface>(relaxed = true)
+        val taskId = UUID.randomUUID()
+
+        val result = TaskService(repository, publisher).find(taskId)
+
+        assertNull(result)
     }
 }
