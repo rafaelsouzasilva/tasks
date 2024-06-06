@@ -1,7 +1,7 @@
-package br.com.rssdev.tasks.core.application
+package br.com.rssdev.tasks.application.services
 
 import br.com.rssdev.tasks.core.models.Task
-import br.com.rssdev.tasks.ports.services.TaskServiceInterface
+import br.com.rssdev.tasks.application.ports.services.TaskServiceInterface
 import java.util.UUID
 
 class TaskService: TaskServiceInterface {

@@ -1,4 +1,4 @@
-package br.com.rssdev.tasks.ports.services
+package br.com.rssdev.tasks.application.ports.services
 
 import br.com.rssdev.tasks.core.models.Task
 import java.util.UUID

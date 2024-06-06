@@ -1,7 +1,7 @@
 package br.com.rssdev.tasks.adapters.persistance
 
 import br.com.rssdev.tasks.core.models.Task
-import br.com.rssdev.tasks.ports.repositories.TaskRepositoryInterface
+import br.com.rssdev.tasks.application.ports.repositories.TaskRepositoryInterface
 import java.util.UUID
 
 class DatabaseTaskRepository : TaskRepositoryInterface {
