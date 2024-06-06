@@ -41,6 +41,7 @@ A ideia principal é isolar o núcleo da aplicação (regras de negócios) das p
 - **Docker**: Containerização da aplicação.
 - **[Actuator (health)](http://localhost:8080/actuator/health)**: Biblioteca utilizada para o health da aplicação.
 - **Mockk**: Biblioteca para auxiliar nos mocks realizados no desevolvimento dos testes.
+- **Detekt**: Ferramenta de lint para garantir a qualidade do código.
 
 ### Requisitos
 - Java 19 ou superior
