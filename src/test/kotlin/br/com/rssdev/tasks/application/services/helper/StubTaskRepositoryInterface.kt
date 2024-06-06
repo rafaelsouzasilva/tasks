@@ -6,23 +6,26 @@ import br.com.rssdev.tasks.core.models.TaskStatus
 import java.time.LocalDateTime
 import java.util.UUID
 
-class StubTaskRepository(private val tasks: List<Task> = emptyList()) : TaskRepositoryInterface {
-    override fun findById(id: UUID): Task? = null
+class StubTaskRepository(private val tasks: MutableList<Task> = mutableListOf()) : TaskRepositoryInterface {
+    override fun findById(id: UUID): Task? = tasks.find { it.id == id }
 
     override fun findAll(): List<Task> = tasks
 
-    override fun findAllByCategoryId(categoryId: UUID): List<Task> = emptyList()
+    override fun findAllByCategoryId(categoryId: UUID): List<Task> = tasks.filter { it.category?.id == categoryId }
 
     override fun create(task: Task): Task {
-        TODO("Not yet implemented")
+        tasks.add(task)
+        return findById(task.id)!!
     }
 
     override fun update(task: Task): Task {
-        TODO("Not yet implemented")
+        deleteById(task.id)
+        return create(task)
     }
 
-    override fun deleteById(id: UUID) = Unit
+    override fun deleteById(id: UUID) {
+        findById(id).let { tasks.remove(it) }
+    }
 
-    override fun findAllByStatusAndDueTime(status: TaskStatus, dueDateTime: LocalDateTime): List<Task> =
-        emptyList()
+    override fun findAllByStatusAndDueTime(status: TaskStatus, dueDateTime: LocalDateTime): List<Task> = emptyList()
 }

@@ -3,6 +3,8 @@ package br.com.rssdev.tasks.adapters.api
 import br.com.rssdev.tasks.adapters.api.resources.TaskDto
 import br.com.rssdev.tasks.adapters.persistance.repositories.DatabaseCategoryRepository
 import br.com.rssdev.tasks.adapters.persistance.repositories.DatabaseTaskRepository
+import br.com.rssdev.tasks.application.services.helper.CategoryBuilder
+import br.com.rssdev.tasks.application.services.helper.TaskBuilder
 import br.com.rssdev.tasks.core.models.Category
 import br.com.rssdev.tasks.core.models.Task
 import br.com.rssdev.tasks.core.models.TaskStatus
@@ -64,17 +66,10 @@ class TasksApplicationTests {
 
 	@Test
 	fun `returns ok with found task when getting task and it exists`() {
-		val categoryId = UUID.randomUUID()
-		val category = Category(id = categoryId, name = "category-name")
+		val category = CategoryBuilder().build()
 		val savedCategory = databaseCategoryRepository.create(category)
-		val taskId = UUID.randomUUID()
-		val task = Task(
-			id = taskId,
-			name = "task-name",
-			description = null,
-			status = TaskStatus.PENDING,
-			category = savedCategory
-		)
+		val task = TaskBuilder().withCategory(savedCategory).build()
+		val taskId = task.id
 		databaseTaskRepository.create(task)
 
 		val result = mockMvc.perform(MockMvcRequestBuilders.get("/tasks/$taskId"))

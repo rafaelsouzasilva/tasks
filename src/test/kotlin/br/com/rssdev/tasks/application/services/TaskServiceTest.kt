@@ -3,6 +3,7 @@ package br.com.rssdev.tasks.application.services
 import br.com.rssdev.tasks.application.ports.events.EventPublisherInterface
 import br.com.rssdev.tasks.application.ports.repositories.TaskRepositoryInterface
 import br.com.rssdev.tasks.application.services.helper.StubTaskRepository
+import br.com.rssdev.tasks.application.services.helper.TaskBuilder
 import br.com.rssdev.tasks.core.events.TaskCreatedEvent
 import br.com.rssdev.tasks.core.models.Task
 import io.mockk.every
@@ -10,6 +11,7 @@ import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import java.util.UUID
 
 class TaskServiceTest {
     @Test
@@ -28,8 +30,9 @@ class TaskServiceTest {
 
     @Test
     fun `returns found tasks when find all tasks`() {
-        val task = mockk<Task>()
-        val tasks = listOf(task, task)
+        val task1 = TaskBuilder().withId(id = UUID.randomUUID()).build()
+        val task2 = TaskBuilder().withId(id = UUID.randomUUID()).build()
+        val tasks = mutableListOf(task1, task2)
         val repository: TaskRepositoryInterface = StubTaskRepository(tasks)
         val publisher = mockk<EventPublisherInterface>(relaxed = true)
 
