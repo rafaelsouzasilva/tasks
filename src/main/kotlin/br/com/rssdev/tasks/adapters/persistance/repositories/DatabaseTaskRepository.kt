@@ -1,4 +1,4 @@
-package br.com.rssdev.tasks.adapters.persistance
+package br.com.rssdev.tasks.adapters.persistance.repositories
 
 import br.com.rssdev.tasks.core.models.Task
 import br.com.rssdev.tasks.application.ports.repositories.TaskRepositoryInterface
