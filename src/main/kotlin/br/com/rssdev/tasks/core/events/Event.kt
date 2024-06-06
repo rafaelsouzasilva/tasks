@@ -1,4 +1,4 @@
-package br.com.rssdev.tasks.core.models
+package br.com.rssdev.tasks.core.events
 
 import java.util.UUID
 

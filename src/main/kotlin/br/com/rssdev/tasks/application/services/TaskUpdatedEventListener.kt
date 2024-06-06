@@ -3,7 +3,7 @@ package br.com.rssdev.tasks.application.services
 import br.com.rssdev.tasks.application.ports.events.EventListenerInterface
 import br.com.rssdev.tasks.application.ports.services.NotificationServiceInterface
 import br.com.rssdev.tasks.core.events.TaskUpdatedEvent
-import br.com.rssdev.tasks.core.models.Event
+import br.com.rssdev.tasks.core.events.Event
 import br.com.rssdev.tasks.core.models.Task
 import org.springframework.stereotype.Service
 

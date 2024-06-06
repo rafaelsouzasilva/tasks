@@ -1,6 +1,6 @@
 package br.com.rssdev.tasks.application.ports.events
 
-import br.com.rssdev.tasks.core.models.Event
+import br.com.rssdev.tasks.core.events.Event
 
 interface EventListenerInterface<T: Event> {
     fun <T: Event> consume(event: T)
