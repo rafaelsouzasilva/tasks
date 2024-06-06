@@ -12,4 +12,6 @@ data class Task(
     val createdAt: LocalDateTime = LocalDateTime.now(),
     val updatedAt: LocalDateTime = LocalDateTime.now(),
     val category: Category? = null
-)
+) {
+    override fun equals(other: Any?): Boolean = this.id == (other as Task).id
+}

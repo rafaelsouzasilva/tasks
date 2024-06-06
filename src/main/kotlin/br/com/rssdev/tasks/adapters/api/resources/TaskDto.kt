@@ -10,7 +10,7 @@ data class TaskDto(
     val id: UUID? = null,
     val name: String,
     val description: String?,
-    val categoryId: String,
+    val categoryId: UUID,
     val dueDate: LocalDateTime? = null
 ) {
     fun toDomain() = Task(
@@ -18,7 +18,7 @@ data class TaskDto(
         name = name,
         description = description,
         status = TaskStatus.PENDING,
-        category = Category(id = UUID.fromString(categoryId), name = ""),
+        category = Category(id = categoryId, name = ""),
         dueDateTime = dueDate
     )
 }
