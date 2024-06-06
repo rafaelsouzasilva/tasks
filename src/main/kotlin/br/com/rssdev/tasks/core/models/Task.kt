@@ -9,5 +9,6 @@ data class Task(
     val description: String,
     val status: TaskStatus,
     val createdAt: LocalDateTime,
-    val updatedAt: LocalDateTime
+    val updatedAt: LocalDateTime,
+    val category: Category? = null
 )

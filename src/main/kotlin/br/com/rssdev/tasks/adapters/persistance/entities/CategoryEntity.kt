@@ -11,5 +11,8 @@ data class CategoryEntity(
     val id: UUID = UUID.randomUUID(),
     val name: String
 ) {
+    companion object {
+        fun fromDomain(category: Category) = CategoryEntity(category.id, category.name)
+    }
     fun toDomain() = Category(id, name)
 }

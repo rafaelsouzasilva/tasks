@@ -6,7 +6,7 @@ import java.util.UUID
 interface CategoryRepositoryInterface {
     fun findById(id: UUID): Category?
     fun findAll(): List<Category>
-    fun create(task: Category): Category
-    fun update(task: Category): Category
+    fun create(category: Category): Category
+    fun update(category: Category): Category
     fun deleteById(id: UUID)
 }

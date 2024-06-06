@@ -18,10 +18,24 @@ data class TaskEntity(
     val description: String,
     @Enumerated(EnumType.STRING)
     val status: TaskStatus,
+    @Column(name = "category_id")
+    val categoryId: UUID,
     @Column(name = "created_at")
     val createdAt: LocalDateTime,
     @Column(name = "updated_at")
     val updatedAt: LocalDateTime
 ) {
+    companion object {
+        fun fromDomain(task: Task) = TaskEntity(
+            task.id,
+            task.name,
+            task.description,
+            task.status,
+            task.category!!.id,
+            task.createdAt,
+            task.updatedAt
+        )
+    }
+
     fun toDomain() = Task(id, name, description, status, createdAt, updatedAt)
 }
