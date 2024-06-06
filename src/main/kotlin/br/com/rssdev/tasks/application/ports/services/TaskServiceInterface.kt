@@ -8,6 +8,7 @@ interface TaskServiceInterface {
     fun find(id: UUID): Task?
     fun findAll(): List<Task>
     fun findAllByCategoryId(categoryId: UUID): List<Task>
+    fun findAllPendingTasksWithCloseTimeReached(): List<Task>
     fun delete(id: UUID)
     fun update(task: Task): Task
 }

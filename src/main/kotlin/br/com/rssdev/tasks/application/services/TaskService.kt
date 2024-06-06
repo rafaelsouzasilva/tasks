@@ -6,7 +6,9 @@ import br.com.rssdev.tasks.core.models.Task
 import br.com.rssdev.tasks.application.ports.services.TaskServiceInterface
 import br.com.rssdev.tasks.core.events.TaskCreatedEvent
 import br.com.rssdev.tasks.core.events.TaskUpdatedEvent
+import br.com.rssdev.tasks.core.models.TaskStatus
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 import java.util.UUID
 
 @Service
@@ -23,6 +25,9 @@ class TaskService(
     override fun findAll(): List<Task> = repository.findAll()
 
     override fun findAllByCategoryId(categoryId: UUID): List<Task> = repository.findAllByCategoryId(categoryId)
+
+    override fun findAllPendingTasksWithCloseTimeReached(): List<Task> =
+        repository.findAllByStatusAndDueTime(TaskStatus.PENDING, LocalDateTime.now().plusMinutes(5))
 
     override fun delete(id: UUID) = repository.deleteById(id)
 
