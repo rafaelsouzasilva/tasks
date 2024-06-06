@@ -4,7 +4,7 @@ import br.com.rssdev.tasks.application.ports.services.NotificationServiceInterfa
 import org.springframework.stereotype.Component
 
 @Component
-class NotificationPusher: NotificationServiceInterface {
+class NotificationPusher : NotificationServiceInterface {
     override fun notify(message: String) =
         println(message)
 }

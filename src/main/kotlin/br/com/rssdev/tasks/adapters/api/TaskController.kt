@@ -40,5 +40,4 @@ class TaskController(private val service: TaskServiceInterface) {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun delete(@PathVariable("id") id: UUID) = service.delete(id)
-
 }

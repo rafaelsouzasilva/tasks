@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Component
 
 @Component
-class SpringEventPublisher(private val applicationEventPublisher: ApplicationEventPublisher): EventPublisherInterface {
+class SpringEventPublisher(private val applicationEventPublisher: ApplicationEventPublisher) : EventPublisherInterface {
     override fun publish(event: Event) =
         applicationEventPublisher.publishEvent(GenericSpringEvent(event))
 }

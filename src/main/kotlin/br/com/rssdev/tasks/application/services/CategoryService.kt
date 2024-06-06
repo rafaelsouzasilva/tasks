@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 import java.util.UUID
 
 @Service
-class CategoryService(private val repository: CategoryRepositoryInterface): CategoryServiceInterface {
+class CategoryService(private val repository: CategoryRepositoryInterface) : CategoryServiceInterface {
     override fun findAll(): List<Category> = repository.findAll()
 
     override fun find(id: UUID): Category? = repository.findById(id)

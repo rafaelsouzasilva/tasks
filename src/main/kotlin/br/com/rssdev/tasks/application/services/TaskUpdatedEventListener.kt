@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 @Service
 class TaskUpdatedEventListener(
     private val notificationService: NotificationServiceInterface
-): EventListenerInterface<TaskUpdatedEvent> {
+) : EventListenerInterface<TaskUpdatedEvent> {
     override fun <TaskUpdatedEvent : Event> consume(event: TaskUpdatedEvent) {
         val task = event.payload as Task
         notificationService.notify("task ${task.name} created")

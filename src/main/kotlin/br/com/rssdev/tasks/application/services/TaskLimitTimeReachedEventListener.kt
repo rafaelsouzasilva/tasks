@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 @Service
 class TaskLimitTimeReachedEventListener(
     private val notificationService: NotificationServiceInterface
-): EventListenerInterface<TaskLimitTimeReachedEvent> {
+) : EventListenerInterface<TaskLimitTimeReachedEvent> {
     override fun <TaskLimitTimeReachedEvent : Event> consume(event: TaskLimitTimeReachedEvent) {
         val task = event.payload as Task
         notificationService.notify("task ${task.name} remember time in five minutes")

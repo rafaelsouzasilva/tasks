@@ -7,7 +7,6 @@ import br.com.rssdev.tasks.application.services.helper.CategoryBuilder
 import br.com.rssdev.tasks.application.services.helper.TaskBuilder
 import br.com.rssdev.tasks.core.models.Category
 import br.com.rssdev.tasks.core.models.Task
-import br.com.rssdev.tasks.core.models.TaskStatus
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

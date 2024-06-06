@@ -1,9 +1,10 @@
 plugins {
 	id("org.springframework.boot") version "3.3.1-SNAPSHOT"
 	id("io.spring.dependency-management") version "1.1.5"
-	kotlin("plugin.jpa") version "1.9.24"
-	kotlin("jvm") version "1.9.24"
-	kotlin("plugin.spring") version "1.9.24"
+	kotlin("plugin.jpa") version "1.9.21"
+	kotlin("jvm") version "1.9.21"
+	kotlin("plugin.spring") version "1.9.21"
+	id("io.gitlab.arturbosch.detekt") version "1.23.4"
 }
 
 group = "br.com.rssdev"
@@ -35,6 +36,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 
 	testImplementation("io.mockk:mockk:1.12.4")
+
+	detekt("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.4")
+	detekt("io.gitlab.arturbosch.detekt:detekt-cli:1.23.4")
 }
 
 kotlin {
@@ -45,4 +49,11 @@ kotlin {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+detekt {
+	toolVersion = "1.23.4"
+	source.setFrom(files("./"))
+	config.setFrom(files("./detekt-config.yml"))
+	autoCorrect = true
 }

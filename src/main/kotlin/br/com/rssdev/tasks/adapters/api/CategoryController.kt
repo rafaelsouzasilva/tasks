@@ -40,5 +40,4 @@ class CategoryController(private val service: CategoryServiceInterface) {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun delete(@PathVariable("id") id: UUID) = service.delete(id)
-
 }

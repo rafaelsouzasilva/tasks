@@ -15,7 +15,7 @@ import java.util.UUID
 class TaskService(
     private val repository: TaskRepositoryInterface,
     private val publisher: EventPublisherInterface
-): TaskServiceInterface {
+) : TaskServiceInterface {
 
     override fun create(task: Task): Task =
         repository.create(task).also { publisher.publish(TaskCreatedEvent(payload = it)) }
@@ -33,5 +33,4 @@ class TaskService(
 
     override fun update(task: Task): Task =
         repository.update(task).also { publisher.publish(TaskUpdatedEvent(payload = it)) }
-
 }
