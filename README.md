@@ -29,13 +29,18 @@ A ideia principal é isolar o núcleo da aplicação (regras de negócios) das p
 ![database.png](images/database.png)
 
 ## Tecnologias e frameworks utilizados
+
+### Tecnologia
 - **Kotlin**: Linguagem utilizada para desenvolvimento da aplicação.
+
+### Frameworks e bibliotecas
 - **Spring Boot**: Framework utilizado para simplificar o desenvolvimento de aplicações stand-alone baseadas em Spring.
-- **Spring Data JPA**: Utilizado para persistência de dados e mapeamento objeto-relacional.
+- **Spring Data JPA**: Utilizado para ORM.
 - **Banco de dados [H2](http://localhost:8080/h2-console)**: Banco de dados em memória utilizado para desenvolvimento e testes.
-- **Gradle**: Ferramenta de automação de builds utilizada para gerenciar dependências e tarefas de build.
-- **Docker**: Utilizado para containerizar a aplicação, garantindo um ambiente consistente para desenvolvimento e produção.
+- **Gradle**: Gerenciador de dependências e build.
+- **Docker**: Containerização da aplicação.
 - **[Actuator (health)](http://localhost:8080/actuator/health)**: Biblioteca utilizada para o health da aplicação.
+- **Mockk**: Biblioteca para auxiliar nos mocks realizados no desevolvimento dos testes.
 
 ### Requisitos
 - Java 19 ou superior

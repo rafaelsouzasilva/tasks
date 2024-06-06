@@ -33,6 +33,8 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
+
+	testImplementation("io.mockk:mockk:1.12.4")
 }
 
 kotlin {
