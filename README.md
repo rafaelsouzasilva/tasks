@@ -1,7 +1,5 @@
 # Task management
 
-## Contexto
-
 Este projeto tem como intuito gerenciar tarefas, utilizamos esse use case para realizar uma implementação de um case que utilize arquitetura hexagonal. 
 
 As funcionalidades presentes nesse projeto são:
@@ -28,7 +26,7 @@ A ideia principal é isolar o núcleo da aplicação (regras de negócios) das p
 - **Adapters**: Implementações das interfaces definidas nas portas. Eles traduzem chamadas de tecnologias externas para algo que o núcleo da aplicação entende e vice-versa.
 
 ## Base de dados
-![database.png](images/rename.png)
+![database.png](images/database.png)
 
 ## Tecnologias e frameworks utilizados
 - **Kotlin**: Linguagem utilizada para desenvolvimento da aplicação.
