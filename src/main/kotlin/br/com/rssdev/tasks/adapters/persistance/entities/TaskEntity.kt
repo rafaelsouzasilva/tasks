@@ -20,6 +20,8 @@ data class TaskEntity(
     val status: TaskStatus,
     @Column(name = "category_id")
     val categoryId: UUID,
+    @Column(name = "due_date_time")
+    val dueDate: LocalDateTime?,
     @Column(name = "created_at")
     val createdAt: LocalDateTime,
     @Column(name = "updated_at")
@@ -32,10 +34,11 @@ data class TaskEntity(
             task.description,
             task.status,
             task.category!!.id,
+            task.dueDateTime,
             task.createdAt,
             task.updatedAt
         )
     }
 
-    fun toDomain() = Task(id, name, description, status, createdAt, updatedAt)
+    fun toDomain() = Task(id, name, description, status, dueDate, createdAt, updatedAt)
 }

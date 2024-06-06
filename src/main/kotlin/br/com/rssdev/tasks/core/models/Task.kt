@@ -8,6 +8,7 @@ data class Task(
     val name: String,
     val description: String? = null,
     val status: TaskStatus,
+    val dueDateTime: LocalDateTime? = null,
     val createdAt: LocalDateTime = LocalDateTime.now(),
     val updatedAt: LocalDateTime = LocalDateTime.now(),
     val category: Category? = null
