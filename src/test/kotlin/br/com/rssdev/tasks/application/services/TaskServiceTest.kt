@@ -69,4 +69,21 @@ class TaskServiceTest {
 
         assertNull(result)
     }
+
+    @Test
+    fun `removes task from saved tasks when deleting task`() {
+        val task1 = TaskBuilder().withId(id = UUID.randomUUID()).build()
+        val task2 = TaskBuilder().withId(id = UUID.randomUUID()).build()
+        val tasks = mutableListOf(task1, task2)
+        val repository: TaskRepositoryInterface = StubTaskRepository(tasks)
+        val publisher = mockk<EventPublisherInterface>(relaxed = true)
+        val taskId = task1.id
+
+        val subject = TaskService(repository, publisher)
+        subject.delete(taskId)
+        val result = subject.findAll()
+
+        val expected = tasks.filter { it.id != taskId }
+        assertEquals(result, expected)
+    }
 }
