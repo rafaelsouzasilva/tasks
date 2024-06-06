@@ -1,5 +1,6 @@
 package br.com.rssdev.tasks.adapters.api
 
+import br.com.rssdev.tasks.adapters.api.resources.CategoryDto
 import br.com.rssdev.tasks.application.ports.services.CategoryServiceInterface
 import br.com.rssdev.tasks.core.models.Category
 import org.springframework.http.HttpStatus
@@ -29,12 +30,12 @@ class CategoryController(private val service: CategoryServiceInterface) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun create(@RequestBody category: Category): Category = service.create(category)
+    fun create(@RequestBody category: CategoryDto): Category = service.create(category.toDomain())
 
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    fun update(@PathVariable("id") id: UUID, @RequestBody category: Category): Category =
-        service.update(category.copy(id = id))
+    fun update(@PathVariable("id") id: UUID, @RequestBody category: CategoryDto): Category =
+        service.update(category.toDomain().copy(id = id))
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

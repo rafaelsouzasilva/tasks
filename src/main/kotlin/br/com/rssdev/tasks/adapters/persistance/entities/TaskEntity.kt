@@ -15,7 +15,7 @@ data class TaskEntity(
     @Id
     val id: UUID = UUID.randomUUID(),
     val name: String,
-    val description: String,
+    val description: String?,
     @Enumerated(EnumType.STRING)
     val status: TaskStatus,
     @Column(name = "category_id")

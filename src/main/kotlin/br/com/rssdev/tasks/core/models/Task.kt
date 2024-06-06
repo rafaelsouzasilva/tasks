@@ -6,9 +6,9 @@ import java.util.UUID
 data class Task(
     val id: UUID,
     val name: String,
-    val description: String,
+    val description: String? = null,
     val status: TaskStatus,
-    val createdAt: LocalDateTime,
-    val updatedAt: LocalDateTime,
+    val createdAt: LocalDateTime = LocalDateTime.now(),
+    val updatedAt: LocalDateTime = LocalDateTime.now(),
     val category: Category? = null
 )

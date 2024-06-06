@@ -1,5 +1,6 @@
 package br.com.rssdev.tasks.adapters.api
 
+import br.com.rssdev.tasks.adapters.api.resources.TaskDto
 import br.com.rssdev.tasks.application.ports.services.TaskServiceInterface
 import br.com.rssdev.tasks.core.models.Task
 import org.springframework.http.HttpStatus
@@ -29,12 +30,12 @@ class TaskController(private val service: TaskServiceInterface) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun create(@RequestBody category: Task): Task = service.create(category)
+    fun create(@RequestBody category: TaskDto): Task = service.create(category.toDomain())
 
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    fun update(@PathVariable("id") id: UUID, @RequestBody category: Task): Task =
-        service.update(category.copy(id = id))
+    fun update(@PathVariable("id") id: UUID, @RequestBody category: TaskDto): Task =
+        service.update(category.toDomain().copy(id = id))
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
