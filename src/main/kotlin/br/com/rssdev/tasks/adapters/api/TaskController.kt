@@ -1,7 +1,7 @@
 package br.com.rssdev.tasks.adapters.api
 
-import br.com.rssdev.tasks.application.ports.services.CategoryServiceInterface
-import br.com.rssdev.tasks.core.models.Category
+import br.com.rssdev.tasks.application.ports.services.TaskServiceInterface
+import br.com.rssdev.tasks.core.models.Task
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -16,24 +16,24 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import java.util.UUID
 
 @RestController
-@RequestMapping("/categories")
-class CategoryController(private val service: CategoryServiceInterface) {
+@RequestMapping("/tasks")
+class TaskController(private val service: TaskServiceInterface) {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    fun list(): List<Category> = service.findAll()
+    fun list(): List<Task> = service.findAll()
 
     @GetMapping("/{id}")
-    fun find(@PathVariable("id") id: UUID): ResponseEntity<Category> =
+    fun find(@PathVariable("id") id: UUID): ResponseEntity<Task> =
         service.find(id)?.let { ResponseEntity.ok(it) } ?: ResponseEntity.notFound().build()
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun create(@RequestBody category: Category): Category = service.create(category)
+    fun create(@RequestBody category: Task): Task = service.create(category)
 
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    fun update(@PathVariable("id") id: UUID, @RequestBody category: Category): Category =
+    fun update(@PathVariable("id") id: UUID, @RequestBody category: Task): Task =
         service.update(category.copy(id = id))
 
     @DeleteMapping("/{id}")

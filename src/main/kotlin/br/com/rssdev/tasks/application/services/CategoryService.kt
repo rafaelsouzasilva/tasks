@@ -10,11 +10,11 @@ import java.util.UUID
 class CategoryService(private val repository: CategoryRepositoryInterface): CategoryServiceInterface {
     override fun findAll(): List<Category> = repository.findAll()
 
-    override fun findById(id: UUID): Category? = repository.findById(id)
+    override fun find(id: UUID): Category? = repository.findById(id)
 
     override fun create(category: Category): Category = repository.create(category)
 
     override fun update(category: Category): Category = repository.update(category)
 
-    override fun deleteById(id: UUID) = repository.deleteById(id)
+    override fun delete(id: UUID) = repository.deleteById(id)
 }

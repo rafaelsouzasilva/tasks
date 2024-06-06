@@ -5,8 +5,8 @@ import java.util.UUID
 
 interface CategoryServiceInterface {
     fun findAll(): List<Category>
-    fun findById(id: UUID): Category?
+    fun find(id: UUID): Category?
     fun create(category: Category): Category
     fun update(category: Category): Category
-    fun deleteById(id: UUID)
+    fun delete(id: UUID)
 }
