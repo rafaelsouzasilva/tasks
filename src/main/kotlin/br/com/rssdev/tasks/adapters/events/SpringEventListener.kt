@@ -9,7 +9,6 @@ class SpringEventListener(
     private val listeners: List<EventListenerInterface<*>>
 ) : ApplicationListener<GenericSpringEvent> {
     override fun onApplicationEvent(event: GenericSpringEvent) {
-        println("event received $event")
         listeners.forEach { listener -> listener.process(event.getDomainEvent()) }
     }
 }

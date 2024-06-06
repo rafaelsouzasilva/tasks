@@ -1,14 +1,19 @@
 package br.com.rssdev.tasks.application.services
 
 import br.com.rssdev.tasks.application.ports.events.EventListenerInterface
+import br.com.rssdev.tasks.application.ports.services.NotificationServiceInterface
 import br.com.rssdev.tasks.core.events.TaskUpdatedEvent
 import br.com.rssdev.tasks.core.models.Event
+import br.com.rssdev.tasks.core.models.Task
 import org.springframework.stereotype.Service
 
 @Service
-class TaskUpdatedEventListener: EventListenerInterface<TaskUpdatedEvent> {
+class TaskUpdatedEventListener(
+    private val notificationService: NotificationServiceInterface
+): EventListenerInterface<TaskUpdatedEvent> {
     override fun <TaskUpdatedEvent : Event> consume(event: TaskUpdatedEvent) {
-        println("task updated $event")
+        val task = event.payload as Task
+        notificationService.notify("task ${task.name} created")
     }
 
     override fun <T : Event> isEventValid(event: T): Boolean =
