@@ -1,14 +1,15 @@
 package br.com.rssdev.tasks.adapters.jobs
 
-import br.com.rssdev.tasks.application.ports.services.NotificationServiceInterface
+import br.com.rssdev.tasks.application.ports.events.EventPublisherInterface
 import br.com.rssdev.tasks.application.ports.services.TaskServiceInterface
+import br.com.rssdev.tasks.core.events.TaskLimitTimeReachedEvent
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
 
 @Component
 class TaskTimerScheduledJob(
     private val taskService: TaskServiceInterface,
-    private val notificationService: NotificationServiceInterface
+    private val publisher: EventPublisherInterface
 ) {
 
     private companion object {
@@ -21,7 +22,7 @@ class TaskTimerScheduledJob(
     fun notifyFixedRateTaskSchedule() {
         println("executing fixed rate task to verify time reached executed-at: ${System.currentTimeMillis() / 1000}")
         findTasks().forEach { task ->
-            notificationService.notify("task ${task.name} remember time in five minutes")
+            publisher.publish(TaskLimitTimeReachedEvent(payload = task))
         }
     }
 
